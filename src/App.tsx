@@ -204,25 +204,27 @@ function ArcadeApp(): JSX.Element {
   })();
 
   return (
-    <ArcadeShell
-      header={
-        <HeaderBar
-          onOpenSettings={() => setScreen('settings')}
-          onOpenProfile={() => setScreen('profile')}
-          aiEnabled={settings.globalAIEnabled}
-          onToggleAI={toggleGlobalAI}
-        />
-      }
-      main={mainContent}
-      footer={<FooterBar />}
-    />
-    <DebugOverlay
-      key={`debug-${debugTick}`}
-      visible={settings.debugOverlay}
-      gameId={currentGameId}
-      aiRunning={Boolean(currentGameId && engine.ai.isRunning(currentGameId))}
-      particleCount={engine.particles.count}
-    />
+    <>
+      <ArcadeShell
+        header={
+          <HeaderBar
+            onOpenSettings={() => setScreen('settings')}
+            onOpenProfile={() => setScreen('profile')}
+            aiEnabled={settings.globalAIEnabled}
+            onToggleAI={toggleGlobalAI}
+          />
+        }
+        main={mainContent}
+        footer={<FooterBar />}
+      />
+      <DebugOverlay
+        key={`debug-${debugTick}`}
+        visible={settings.debugOverlay}
+        gameId={currentGameId}
+        aiRunning={Boolean(currentGameId && engine.ai.isRunning(currentGameId))}
+        particleCount={engine.particles.count}
+      />
+    </>
   );
 }
 
